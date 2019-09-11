@@ -1,20 +1,52 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
+import './Styles/Note.css';
 
 class Notes extends Component {
 
   allNotes=this.props.store.notes.map(note => 
     <div>
-      <h2>{note.name}</h2>
+      <h2>
+      <Link to='/facebook' noteId={note.id}>{note.name}</Link></h2>
       <p>{note.modified}}</p>
       <button>Delete Note</button>
     </div>
   )
 
+  specNotes = (specNotes) => this.props.store.notes.map(note => {
+    //Don't forget to fix date object format
+    if (specNotes === note.folderId) {
+      return (
+    <div className='note'>
+      <h2>{note.name}</h2>
+      <div className="bottom-note">
+        <p>Date Modified on {note.modified}</p>
+        <button>Delete Note</button>
+      </div>
+    </div>
+    )
+    }}
+  )
+
   render() {
-    console.log()
     return(
       <section>
-        {this.allNotes}
+        <Route
+          path='/folders/:folderId'
+          render={(folderId) =>
+          this.specNotes(folderId.match.params.folderId)
+          }
+          />
+        <Route
+          path='/notes'
+          render={this.allNotes}
+        />
+        <Route
+          path='/notes/:noteId'
+          render={(noteId) =>
+          this.specNotes(noteId)
+          }
+          />
       </section>
     )
   }

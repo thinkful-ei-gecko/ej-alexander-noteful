@@ -50,3 +50,7 @@
     text-align: center;
     padding-top: 40px;
 }
+
+.selected-folder {
+    background-color: lightblue!important;
+}

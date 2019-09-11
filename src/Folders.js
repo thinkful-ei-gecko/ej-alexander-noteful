@@ -4,18 +4,58 @@ import './Styles/Folders.css'
 
 class Folders extends Component {
 
-  links = this.props.store.folders.map(folder => 
+  links = this.props.store.folders.map(folder =>
     <li className="indiFolder">
-      <Link to={`/folders/${folder.id}`}>{folder.name}</Link>
+      <Link to={`/folders/${folder.id}`} folderId={folder.id} >{folder.name}</Link>
     </li>
     )
+  
+  selectedLinks = (folderId) => this.props.store.folders.map(folder => {
+    console.log(folderId);
+    console.log(folder.id);
+    if (folderId === folder.id) {
+      return (
+      <li className="indiFolder selected-folder">
+      <Link to={`/folders/${folder.id}`} folderId={folder.id} >{folder.name}</Link>
+    </li>
+      )
+    } else {
+      return (
+      <li className="indiFolder">
+        <Link to={`/folders/${folder.id}`} folderId={folder.id} >{folder.name}</Link>
+      </li>
+      )
+    }
+  }
+    )
+
+    // selectedLinks = (folderId) => this.props.store.folders.map(folder => {
+    //   if (folderId === folder.id) {
+    //     return (
+    //     <li className="indiFolder">
+    //     <Link to={`/folders/${folder.id}`} folderId={folder.id} >{folder.name}</Link>
+    //   </li>
+    //     )
+    //   } else {
+    //     return null;
+    //   }
+    // }
+    //   )
+  
+  
 
   render() {
     return(
       <section>
       <div>
         <ul>
-          {this.links}
+          <Route exact path='/' render= { () => this.links } />
+          <Route
+            path='/folders/:folderId'
+            render={(folderId) =>
+            this.selectedLinks(folderId.match.params.folderId)
+            }
+            />
           <li>Add folder</li>
         </ul>
       </div>

@@ -20,8 +20,8 @@ class App extends Component{
       <div className="notes_Main">
         <Switch>
           <Route exact path='/notes' render={()=> <Notes store={this.props.store}/>} />
-          <Route exact path='/notes/:noteId' component={() => <div>Individual Note</div>} />
-          <Route exact path='/folders/:folderId' component={() => <Notes store={this.props.store}/>} />
+          <Route exact path='/notes/:noteId' render={() => <Notes store={this.props.store} />} />
+          <Route exact path='/folders/:folderId' render={() => <Notes store={this.props.store}/>} />
         </Switch>
       </div>
 
