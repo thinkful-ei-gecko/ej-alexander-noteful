@@ -1,20 +1,30 @@
 .note {
     color: #fff;
     width: 90%;
-    background-color: rgb(158, 158, 158);
+    background-color: rgb(85, 85, 85);
     margin-top: 15px;
     min-height: 100px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
+    padding: 5px;
 }
 
-.note h2 {
-    text-decoration: underline;
+.note a {
+    color: white;
+    text-decoration: none;
+}
+
+.note a:visited {
+    color: white;
+    text-decoration: none;
 }
 
 .note button {
     margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .bottom-note {

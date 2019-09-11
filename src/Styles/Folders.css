@@ -1,6 +1,6 @@
 .indiFolder Link {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .indiFolder Link:hover {
@@ -8,13 +8,13 @@
 }
 
 .indiFolder Link:visited {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
 
 .folders_Main {
-    background-color: green;
+    background-color: rgb(175, 175, 175);
     height: 90vh;
     width: 30%;
     position: absolute;
@@ -25,13 +25,13 @@
 }
 
 .folders_Main a {
-    color: black;
+    color: white;
     text-decoration: none;
     display: block; 
 }
 
 .folders_Main a:visited {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -41,11 +41,11 @@
 }
 
 .folders_Main li {
-    color: black;
+    color: white;
     list-style: none;
     text-decoration: none;
     margin-top: 25px;
-    background-color: rgb(170, 170, 170);
+    background-color: rgb(85, 85, 85);
     height: 100px;
     text-align: center;
     padding-top: 40px;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import './Styles/Folders.css'
 
 class Folders extends Component {
@@ -9,6 +9,8 @@ class Folders extends Component {
       <Link to={`/folders/${folder.id}`} folderId={folder.id} >{folder.name}</Link>
     </li>
     )
+
+  links = [...this.links, <li><button>Add Button</button></li>]
   
   selectedLinks = (folderId) => this.props.store.folders.map(folder => {
     console.log(folderId);
@@ -27,22 +29,15 @@ class Folders extends Component {
       )
     }
   }
-    )
+)
 
-    // selectedLinks = (folderId) => this.props.store.folders.map(folder => {
-    //   if (folderId === folder.id) {
-    //     return (
-    //     <li className="indiFolder">
-    //     <Link to={`/folders/${folder.id}`} folderId={folder.id} >{folder.name}</Link>
-    //   </li>
-    //     )
-    //   } else {
-    //     return null;
-    //   }
-    // }
-    //   )
+  previousPage = () => (
+    <Link to={this.props.history.goBack()}></Link>
+  )
   
-  
+  goBack = () => (
+    <li><button onClick={()=> this.previousPage()}>Go Back</button></li>
+    )
 
   render() {
     return(
@@ -56,7 +51,9 @@ class Folders extends Component {
             this.selectedLinks(folderId.match.params.folderId)
             }
             />
-          <li>Add folder</li>
+          <Route path='/notes/:noteid'
+          render={() => 
+          this.goBack()}/>
         </ul>
       </div>
       </section>
@@ -64,16 +61,4 @@ class Folders extends Component {
   }
 }
 
-export default Folders
-
-//make sure to change the static index in the links
-
-// <link to='/folders/folder-'>
-//           {this.props.store.folders[0].name}
-//         </link>
-//         <link to='/folders/folder-'>
-//           {this.props.store.folders[1].name}
-//         </link>
-//         <link to={`./folders/folder-${this.props.store.folders[2].id}`} >
-//           {this.props.store.folders[2].name}
-//         </link>
+export default withRouter(Folders)

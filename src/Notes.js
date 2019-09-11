@@ -4,26 +4,53 @@ import './Styles/Note.css';
 
 class Notes extends Component {
 
-  allNotes=this.props.store.notes.map(note => 
-    <div>
+  allNotes=this.props.store.notes.map(note => {
+    return (
+    <div className="note">
       <h2>
-      <Link to='/facebook' noteId={note.id}>{note.name}</Link></h2>
+      <Link to={`/notes/${note.id}`} noteId={note.id}>{note.name}</Link></h2>
       <p>{note.modified}}</p>
       <button>Delete Note</button>
     </div>
+      ) 
+    }
   )
 
   specNotes = (specNotes) => this.props.store.notes.map(note => {
+
+    console.log(specNotes)
     //Don't forget to fix date object format
     if (specNotes === note.folderId) {
       return (
-    <div className='note'>
-      <h2>{note.name}</h2>
-      <div className="bottom-note">
-        <p>Date Modified on {note.modified}</p>
-        <button>Delete Note</button>
-      </div>
-    </div>
+        <section>
+          <div className='note'>
+            <h2><Link to={`/notes/${note.id}`}>{note.name}</Link></h2>
+            <div className="bottom-note">
+              <p>Date Modified on {note.modified}</p>
+              <button>Delete Note</button>
+            </div>
+          </div>
+        </section>
+    )
+    }}
+  )
+
+  singleNote = (specNotes) => this.props.store.notes.map(note => {
+
+    console.log(specNotes)
+    //Don't forget to fix date object format
+    if (specNotes.match.params.noteId === note.id) {
+      return (
+        <section>
+          <div className='note'>
+            <h2><Link to={`/notes/${note.id}`}>{note.name}</Link></h2>
+            <div className="bottom-note">
+              <p>Date Modified on {note.modified}</p>
+              <button>Delete Note</button>
+            </div>
+          </div>
+          <p>{note.content}</p>
+        </section>
     )
     }}
   )
@@ -38,13 +65,9 @@ class Notes extends Component {
           }
           />
         <Route
-          path='/notes'
-          render={this.allNotes}
-        />
-        <Route
           path='/notes/:noteId'
           render={(noteId) =>
-          this.specNotes(noteId)
+          this.singleNote(noteId)
           }
           />
       </section>
