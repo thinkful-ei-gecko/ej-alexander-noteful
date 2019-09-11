@@ -1,0 +1,52 @@
+.indiFolder Link {
+    text-decoration: none;
+    color: black;
+}
+
+.indiFolder Link:hover {
+    cursor: pointer;
+}
+
+.indiFolder Link:visited {
+    color: black;
+    text-decoration: none;
+}
+
+
+.folders_Main {
+    background-color: green;
+    height: 90vh;
+    width: 30%;
+    position: absolute;
+    text-align: center;
+    padding: 20px 20px;
+    border-right: solid 2px grey;
+    border-top: solid 2px grey;
+}
+
+.folders_Main a {
+    color: black;
+    text-decoration: none;
+    display: block; 
+}
+
+.folders_Main a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.folders_Main ul {
+    list-style: none;
+    text-decoration: none;
+}
+
+.folders_Main li {
+    color: black;
+    list-style: none;
+    text-decoration: none;
+    margin-top: 25px;
+    background-color: rgb(170, 170, 170);
+    height: 100px;
+    text-align: center;
+    padding-top: 40px;
+}

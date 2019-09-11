@@ -1,0 +1,29 @@
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  }
+  
+  .heading {
+    background-color: #282c34;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    border-bottom: solid 2px grey;
+  }
+
+  .heading a {
+    font-size: calc(16px + 2vmin);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .heading a:visited {
+    color: white;
+    text-decoration: none;
+}
